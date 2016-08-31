@@ -1,0 +1,14 @@
+class CreateVisits < ActiveRecord::Migration
+  def change
+    create_table :visits do |t|
+      t.integer :user_id, null: false
+      t.integer :num_visits, default: 0
+      t.integer :short_url_id, null: false
+      t.timestamps
+    end
+
+    add_index :visits, :user_id
+    add_index :visits, :short_url_id
+
+  end
+end
